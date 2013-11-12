@@ -1,0 +1,27 @@
+<h1>Listing divsions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @divsions.each do |divsion| %>
+      <tr>
+        <td><%= divsion.name %></td>
+        <td><%= link_to 'Show', divsion %></td>
+        <td><%= link_to 'Edit', edit_divsion_path(divsion) %></td>
+        <td><%= link_to 'Destroy', divsion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Divsion', new_divsion_path %>
