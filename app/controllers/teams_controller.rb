@@ -14,17 +14,24 @@ class TeamsController < ApplicationController
 
   # GET /teams/new
   def new
+    @division = Division.find(params[:division_id])
     @team = Team.new
+    @team.division = @division
   end
 
   # GET /teams/1/edit
   def edit
+     @division = Division.find(params[:division_id])
+     @team = Team.find(params[:id])
+     @team.division = @division
   end
 
   # POST /teams
   # POST /teams.json
   def create
+    @division = Division.find(params[:division_id])
     @team = Team.new(team_params)
+    @team.division = @division
 
     respond_to do |format|
       if @team.save

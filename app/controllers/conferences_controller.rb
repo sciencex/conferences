@@ -10,6 +10,8 @@ class ConferencesController < ApplicationController
   # GET /conferences/1
   # GET /conferences/1.json
   def show
+    @conference = Conference.find(params[:id])
+    @divisions = @conference.divisions
   end
 
   # GET /conferences/new

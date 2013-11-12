@@ -10,21 +10,31 @@ class DivsionsController < ApplicationController
   # GET /divsions/1
   # GET /divsions/1.json
   def show
+    @division = Division.find(params[:id])
+    @teams = @division.teams
   end
 
   # GET /divsions/new
   def new
+    @conference = Conference.find(params[:conference_id])
     @divsion = Divsion.new
+    division.conference = @conference
   end
 
   # GET /divsions/1/edit
   def edit
+    @conference = Conference.find(params[:conference_id])
+    @division = Division.find(params[:id])
+    @division.conference = @conference
   end
 
   # POST /divsions
   # POST /divsions.json
   def create
+    @conference = Conference.find(params[:conference_id])
+   # @division = Division.find(params[:id])
     @divsion = Divsion.new(divsion_params)
+    @division.conference = @conference
 
     respond_to do |format|
       if @divsion.save
